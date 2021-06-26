@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Login
+{% endblock page_title %}
+
+{% block contents %}
+
+<div class="card-body">
+
+  <div class="row justify-content-center" >
+    <div class="col-md-5" >
+    <div class="card card-primary" style="box-shadow: 0 2px 3px rgba(0,0,0,0.3); padding: 40px;" >
+        <!-- <div class="card-header"> -->
+          <h5 class="card-title text-center">Login to your account</h5>
+        <!-- </div> -->
+        <form role="form" method="post">
+            {% csrf_token %}
+          <!-- <div class="card-body"> -->
+            <div class="form-group mt-4">
+              <label for="username" style="font-weight: normal;">Username</label>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text" >
+                    <i class="fa fa-user" style="opacity: 0.5;"></i>
+                  </div>
+                </div>
+
+              <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
+            </div>
+            </div>
+            <div class="form-group mt-4">
+              <label for="password" style="font-weight: normal;">Password</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <li class="fa fa-unlock-alt" style="opacity: 0.5;"></li>
+                  </div>
+                </div>                
+              <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+          </div>
+          <!-- </div> -->
+            <div class="card mt-4">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      </form>
+    </div>
+    </div>
+        
+
+      
+<!-- </div> -->
+{% endblock contents %}
