@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Detail Buku
+{% endblock page_title %}
+
+{% block contents %}
+    <div class="row">
+
+      <div class="card card col-md-8" style="box-shadow: 0 2px 3px rgba(0,0,0,0.3);">
+        <div class="card-body">
+            <nav aria-label="artikelPage">
+
+
+                    <!-- <h3 class="card-title text-center">{{buku.judul_buku}}</h3> -->
+                    <img class="card-img-top smallimg mx-auto d-block" style="width:400px;height:400px;" src="{{buku.cover_pic.url}}" alt="Card image cap">
+                   
+                    </small>
+                    </small><br>
+                    <hr>
+                    <h4>{{buku.judul_buku}}</h4>
+                    <p>Penulis : {{buku.author}}</p>
+                    <p>Penerbit : {{buku.penerbit}}</p>
+                    <p>Tahun Terbit : {{buku.tahun_terbit}}</p>
+                    <small>updated : {{buku.updated}}</small><br>
+                    <small>Publish : {{buku.published}}</small><br><br>
+                    <h4 style="color:blue">Sinopsis</h4>
+                    <p>{{buku.body|safe}}</p>
+                    
+                    <br><br>
+                    
+                    {% if user.is_authenticated %} 
+                    <a class="btn btn-primary " href="{% url 'home' %}">Back</a>
+                    <a class="btn btn-primary" href="{% url 'pinjam-add' buku.pk %}">Pinjam</a>
+                    {% else %}
+                    <a class="btn btn-primary" href="{% url 'home' %}">Back</a>
+                    {% endif %}
+         
+                    
+                    <br><br>
+
+
+</nav>
+</div>
+</div>
+
+<div class="col-sm" >
+    <div class="card " >
+    <div class="card-body " >
+    <h3>Kategori</h3>
+    <ul class="list-group list-group-flush">
+        {% for cat_bukus in cat_buku  %}
+        <li class="list-group-item">
+            <a href="{% url 'category' cat_bukus.pk %}">{{cat_bukus.buku_category}}
+            </a>
+            <!-- {{urlss.path}}
+            {{urlss}} -->
+        </li>
+            {% endfor %}
+            
+    </ul>
+    </div>
+    
+</div>
+</div>
+
+
+</div>
+
+
+<br>
+
+<br><br>
+{% endblock contents %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Detail Buku
+{% endblock page_title %}
+
+{% block contents %}
+    <div class="row">
+
+    <div class="card card col-md-12" style="box-shadow: 0 2px 3px rgba(0,0,0,0.3);">
+        <div class="card-body">
+            <h3 class="card-title text-center"><strong>History Pinjam Buku</strong> </h3><br>
+            <nav aria-label="artikelPage">
+                
+                {% if user.is_authenticated %}
+                    {% for post in pinjam %}
+                    <ul class="list-group">
+                        <li class="list-group-item" >{{forloop.counter}}. {{post.judul_buku}} - {{post.tanggal_pinjam}}      </li>
+                        <!-- <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li> -->
+                    </ul>
+                        <!-- <p>{{post.judul_buku}} - {{post.tanggal_pinjam}}</p>  -->
+                    {% endfor %}
+                    <br>
+                    <a href="{% url 'home' %}" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">Close</a>
+                {% else %}
+                <p>You're not allowed here!</p>
+                {% endif %}
+                    
+                
+            </nav>
+            
+<br><br>
+        </div>
+    </div>
+
+
+<br>
+
+<br><br>
+{% endblock contents %}

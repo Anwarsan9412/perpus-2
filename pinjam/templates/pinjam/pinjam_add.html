@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Add Post
+{% endblock page_title %}
+
+{% block contents %}
+
+<div class="row">
+
+    <div class="card card col-md-8" style="box-shadow: 0 2px 3px rgba(0,0,0,0.3);">
+      <div class="card-body">
+          <nav aria-label="artikelPage ">
+
+{% if user.is_authenticated %}
+    
+<h1 class="card-title text-center">Halaman Pinjam Buku</h1><br>
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="col-sm-auto">
+            <h3>{{bukus.judul_buku}}</h3>
+            <strong>Are you sure ?</strong><br><br><br>
+        </div>
+        <a href="{% url 'home' %}" class="btn btn-secondary " tabindex="-1" role="button" aria-disabled="true">Close</a>&nbsp&nbsp
+        <!-- <a href="{% url 'create-pinjam' bukus.pk %}" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">Download</a> -->
+        <!-- <button class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">Download</button> -->
+        <a href="{% url 'create-pinjam' bukus.pk %}" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">Download</a>
+        <!-- <input type="submit" value="Submit" class='btn btn-dark'> -->
+    </form>
+</div>
+</div>
+</div>
+</div>
+</nav>
+
+
+
+{% else %}
+<p>You're not allowed here!</p>
+{% endif %}
+
+
+
+{% endblock contents %}
