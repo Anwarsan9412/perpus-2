@@ -52,13 +52,7 @@ class Buku(models.Model):
         return reverse('home')
         
     
-class PinjamBuku(models.Model):   
-    peminjam_nama = models.ForeignKey(User, on_delete=models.CASCADE)
-    kd_buku = models.ForeignKey(Buku, null=True,blank=True, on_delete=models.CASCADE)
-    judul_buku = models.CharField(max_length=255)
-    tanggal_pinjam = models.DateField(auto_now_add=True)
-    tanggal_berakhir = models.DateField(default=f'{datetime.datetime.now().date()+timedelta(days=7)}',null=True, blank=True)
-    
+
     # def get_absolute_url(self):
     #     return reverse('home')
     # def save(self, *args, **kwargs):
