@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Home
+{% endblock page_title %} 
+
+{% block contents %}
+
+
+<div class="row" style="margin-bottom: 40px;">
+  <div class="ml-auto">
+    <form action="{% url 'search' %}" method="post">
+      {% csrf_token %}
+
+      <div class="input-group ">
+        <div class="form-outline input-group-lg">
+          <input type="search" id="form1" style="width: 500px;" placeholder='Cari....' class="form-control" name="q" />  
+      </div>
+        <div class="input-group-append ">
+          <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+        </div>
+      </div>       
+     
+    </form>
+
+  </div>
+  
+</div>
+
+
+ 
+    <!-- <div style="margin-left: 700px;">
+      <form action="{% url 'search' %}" method="post">
+        {% csrf_token %}
+        <nav class="item" style="margin-right: 100px;">
+          <div class="input-group">
+            <div class="form-outline">
+              <input type="search" id="form1" class="form-control" />  
+          </div>
+          <button type="submit" class="btn btn-outline-primary">
+            <i class="fas fa-search"></i>
+          </button>
+          </div>
+        </nav>
+      </form>
+    </div>
+    <br> -->
+
+
+    <div class="row">
+      
+                {% for bukus in buku %}
+                
+                <div class="col-sm-3">
+                <div class="card" style="width: 16rem; margin-bottom: 15px; box-shadow: 0 2px 3px rgba(0,0,0,0.3);">
+                    <img class="card-img-top" width="100" height="300" src="{{bukus.cover_pic.url}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>{{bukus.judul_buku}}</strong></h5>
+                      <p class="card-text">{{bukus.body|truncatewords_html:5|safe}}</p>
+                      <a href="{% url 'pinjam-detail' bukus.slug  %}" class="card-link">Detail</a>
+                      <a href="{% url 'pinjam-add' bukus.pk %}" class="card-link">Pinjam</a>
+                    </div>
+                  </div>
+                </div>
+
+                  {% endfor %}
+            </div>
+
+
+
+<br>
+<br><br>
+{% endblock contents %}
